@@ -4,40 +4,45 @@ Python Assesment for metafic.
 # Created API/Views
 
 - View all teams with coach, excluding players [ADMIN]
-/leaguegames/team/
+http://127.0.0.1:8000/leaguegames/team/
 
 - View Specific team including players [ADMIN,COACH]
-/leaguegames/team/2/
+http://127.0.0.1:8000/leaguegames/team/2/
 
 - Add/create a team (Optional, to test selectplayers/ API) [ADMIN,COACH]
-/leaguegames/team/add/
+http://127.0.0.1:8000/leaguegames/team/add/
 
 - View all players [ADMIN]
-/leaguegames/player/
+http://127.0.0.1:8000/leaguegames/player/
 
 - view Specific player details [ADMIN,COACH,PLAYER]
-/leaguegames/player/1/
+http://127.0.0.1:8000/leaguegames/player/1/
 
 - View all games (excluding teams) [ADMIN,COACH,PLAYER]
-/leaguegames/game/
+http://127.0.0.1:8000/leaguegames/game/
 
 - View Specific game including team [ADMIN,COACH]
-/leaguegames/game/1/
+http://127.0.0.1:8000/leaguegames/game/1/
 
 - View Specific game playing team [ADMIN,COACH]
-/leaguegames/game/1/player/
+http://127.0.0.1:8000/leaguegames/game/1/player/
 
 - Add Players to specific game [ADMIN,COACH]
-/leaguegames/game/selectplayers/
+http://127.0.0.1:8000/leaguegames/game/selectplayers/
 
 - to get jwt access token
-/auth/jwt/create
+http://127.0.0.1:8000/auth/jwt/create
 - after expired, to get new access token, we must send refresh to token to following
-/auth/jwt/refresh
+http://127.0.0.1:8000/auth/jwt/refresh
 
 # Implementation
 ***
 - Followed "The Ultimate Django Series", all three series by Mosh Hamedani, as a study guide
+- Apps details
+- [Leaguegames] - The main app
+- [Game] - Game/matches manage and to display scoreboard
+- [Team] - created for team player data manage, but not used, team also managed at Game app
+- [Core] - user data manage
 - Used djoser for JWT authentication, and pytest for testing
 - Generated mock data with "mackaroo"
 # Pending work
