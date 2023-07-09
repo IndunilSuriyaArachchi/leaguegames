@@ -45,6 +45,7 @@ http://127.0.0.1:8000/auth/jwt/refresh
 - [Core] - user data manage
 - Used djoser for JWT authentication, and pytest for testing
 - Generated mock data with "mackaroo"
+- Test user details : username = user1 / password = ILoveDjango
 # Pending work
 ***
 - selectplayers/ API could not be tested, as gray areas in composite keys [game, team, player] saving part knowledge
