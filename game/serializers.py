@@ -1,11 +1,18 @@
 from rest_framework import serializers
 from . models import *
+from django.conf import settings
+from djoser.serializers import UserSerializer as BaseUserSerializer
+
+class UserSerializer(BaseUserSerializer):
+    class Meta(BaseUserSerializer.Meta):
+        fields = ['id', 'first_name', 'last_name']
 
 class PlayerSerializer(serializers.ModelSerializer):
     team = serializers.CharField(source="team.team_name", read_only=True)
+    user=  UserSerializer()
     class Meta:
         model = Player
-        fields = ['id', 'team','fname','lname','height_cm','avg_score', 'played_games','percentile' ]	
+        fields = ['id', 'team','user','height_cm','avg_score', 'played_games','percentile' ]	
         
     percentile = serializers.SerializerMethodField(method_name='calculate_percentile')
     def calculate_percentile(self, player:Player):
@@ -13,9 +20,10 @@ class PlayerSerializer(serializers.ModelSerializer):
     #SELECT * FROM "game_player" where team_id=1 and avg_score>= (SELECT (sum(avg_score)*.9)/count(id) FROM "game_player" where team_id=1);
 
 class CoachSerializer(serializers.ModelSerializer):
+    user=  UserSerializer()
     class Meta:
         model = Coach
-        fields = ['id', 'fname','lname']
+        fields = ['id', 'user']
 
 class TeamSerializer(serializers.ModelSerializer):
     coach=CoachSerializer()
